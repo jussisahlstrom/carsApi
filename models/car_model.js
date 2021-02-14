@@ -1,11 +1,11 @@
 const db = require('../database');
 
-const book = {
+const car = {
   get: function(callback) {
-    return db.query('select * from book order by idcar desc', callback);
+    return db.query('select * from car order by idcar desc', callback);
   },
   getById: function(id, callback) {
-    return db.query('select * from book where idcar=?', [id], callback);
+    return db.query('select * from car where idcar=?', [id], callback);
   },
   add: function(car, callback) {
     return db.query(
