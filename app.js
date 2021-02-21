@@ -7,6 +7,8 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const carRouter = require('./routes/car');
+const ownerRouter = require('./routes/owner');
+const carOwnerRouter = require('./routes/carowner');
 
 const cors = require('cors');
 const helmet = require('helmet');
@@ -29,6 +31,8 @@ app.use(express.static(path.join(dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/car', carRouter);
 app.use('/user', usersRouter);
+app.use('/owner', ownerRouter);
+app.use('/carowner', carOwnerRouter);
 
 
 app.use(function(req, res, next) {
