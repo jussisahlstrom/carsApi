@@ -2,10 +2,18 @@ const db = require('../database');
 
 const carowner = {
   get: function(callback) {
-    return db.query('select * from carowner order by idcarowner desc', callback);
+    return db.query('SELECT * FROM carowner ORDER BY idcarowner DESC', callback);
   },
   getById: function(id, callback) {
     return db.query('select * from carowner where idcarowner=?', [id], callback);
+  },
+  OwnerOfCars: function(callback) {
+    return db.query(select owner.idowner, owner.firstname, owner.lastname,
+    group_concat(concat(car.brand, ' ', car.model) separator', ') as "Cars of the person"
+    from owner
+    join carowner on carowner.idowner=owner.idowner
+    join car ON car.idcar=carowner.idcar
+    group by owner.idowner;, callback);
   },
   add: function(carowner, callback) {
     return db.query(
